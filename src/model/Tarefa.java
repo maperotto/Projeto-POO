@@ -1,4 +1,4 @@
-package ucb.aplicativo.control;
+package ucb.aplicativo.model;
 import java.time.LocalDateTime;
 
 public class Tarefa {
