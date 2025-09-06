@@ -1,6 +1,5 @@
+package ucb.aplicativo.control;
 import java.time.LocalDateTime;
-
-
 
 public class Tarefa {
     private long id;
@@ -68,3 +67,4 @@ public class Tarefa {
     }
   
 }
+
