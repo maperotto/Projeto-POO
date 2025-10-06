@@ -13,6 +13,7 @@ public class TarefaService {
         tarefa.add(nova);
         return nova;
     }
+     public boolean atualizarTarefa(long id, String novoTitulo, String novaDescricao, boolean completo) {
       for (Tarefa t : tarefa) {
             if (t.getId() == id) {
                 t.setTitulo(novoTitulo);
