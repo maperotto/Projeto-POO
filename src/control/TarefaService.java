@@ -13,5 +13,18 @@ public class TarefaService {
         tarefa.add(nova);
         return nova;
     }
+      for (Tarefa t : tarefa) {
+            if (t.getId() == id) {
+                t.setTitulo(novoTitulo);
+                t.setDescricao(novaDescricao);
+                t.setComplemento(completo);
+                return true;
+            }
+        }
+        return false;
+    }
+       public List<Tarefa> listarTarefas() {
+        return tarefa;
+}
     
 }
