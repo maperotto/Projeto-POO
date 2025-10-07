@@ -29,3 +29,13 @@ public class TarefaService {
 }
     
 }
+
+public boolean marcarComoCompleta(Long id) {
+    for (Tarefa t : tarefa) {
+        if (t.getId().equals(id)) {
+            t.setCompleto(true);
+            return true; // Tarefa encontrada e marcada como completa
+        }
+    }
+    return false; // Tarefa não encontrada
+}
