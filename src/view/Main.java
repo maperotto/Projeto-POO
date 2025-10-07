@@ -66,6 +66,20 @@ public class Main {
                     }
                 }
                 
+                /
+                case 4 -> {
+                    System.out.print("ID da tarefa a ser removida: ");
+                    long idParaRemover = sc.nextLong();
+                    sc.nextLine(); 
+
+                    boolean removido = service.removerTarefa(idParaRemover);
+                    if (removido) {
+                        System.out.println("Tarefa removida com sucesso!");
+                    } else {
+                        System.out.println("Tarefa não encontrada!");
+                    }
+                }
+                
                 case 0 -> System.out.println("Saindo... ");
 
                 default -> System.out.println("Opção inválida, tente novamente!");

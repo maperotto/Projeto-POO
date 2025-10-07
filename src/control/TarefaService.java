@@ -6,15 +6,16 @@ import ucb.aplicativo.model.Tarefa;
 public class TarefaService {
     private List<Tarefa> tarefa = new ArrayList<>();
     private Long contadorId = 1L;
-    
-     public Tarefa criarTarefa(String titulo, String descricao) {
+
+    public Tarefa criarTarefa(String titulo, String descricao) {
         Tarefa nova = new Tarefa(titulo, descricao);
-        nova.setId(contadorId++); 
+        nova.setId(contadorId++);
         tarefa.add(nova);
         return nova;
     }
-     public boolean atualizarTarefa(long id, String novoTitulo, String novaDescricao, boolean completo) {
-      for (Tarefa t : tarefa) {
+
+    public boolean atualizarTarefa(long id, String novoTitulo, String novaDescricao, boolean completo) {
+        for (Tarefa t : tarefa) {
             if (t.getId() == id) {
                 t.setTitulo(novoTitulo);
                 t.setDescricao(novaDescricao);
@@ -24,18 +25,12 @@ public class TarefaService {
         }
         return false;
     }
-       public List<Tarefa> listarTarefas() {
-        return tarefa;
-}
-    
-}
 
-public boolean marcarComoCompleta(Long id) {
-    for (Tarefa t : tarefa) {
-        if (t.getId().equals(id)) {
-            t.setCompleto(true);
-            return true; // Tarefa encontrada e marcada como completa
-        }
+    public List<Tarefa> listarTarefas() {
+        return tarefa;
     }
-    return false; // Tarefa não encontrada
+
+    public boolean removerTarefa(long id) {
+        return tarefa.removeIf(t -> t.getId() == id);
+    }
 }
