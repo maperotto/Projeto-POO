@@ -21,15 +21,23 @@ public class Main {
             System.out.println("0 - Sair");
             System.out.print("Escolha uma opcao: ");
             opcao = sc.nextInt();
-            sc.nextLine();
+            sc.nextLine(); 
+            
             switch (opcao) {
+               
                 case 1 -> {
                     System.out.print("Título da tarefa: ");
                     String titulo = sc.nextLine();
                     System.out.print("Descrição da tarefa: ");
                     String descricao = sc.nextLine();
-                    service.criarTarefa(titulo, descricao);
-                    System.out.println(" Tarefa criada com sucesso!");
+
+                    Tarefa tarefaCriada = service.criarTarefa(titulo, descricao);
+
+                    if (tarefaCriada != null) {
+                        System.out.println("Tarefa criada com sucesso!");
+                    } else {
+                        System.out.println("Erro: O título da tarefa não pode estar em branco.");
+                    }
                 }
 
                 case 2 -> {
@@ -58,18 +66,18 @@ public class Main {
                     System.out.print("Nova descrição: ");
                     String novaDescricao = sc.nextLine();
 
-                    boolean atualizado = service.atualizarTarefa(id, novoTitulo, novaDescricao, true);
+                    boolean atualizado = service.atualizarTarefa(id, novoTitulo, novaDescricao, false);
                     if (atualizado) {
-                        System.out.println("️ Tarefa atualizada com sucesso!");
+                        System.out.println("️Tarefa atualizada com sucesso!");
                     } else {
-                        System.out.println(" Tarefa não encontrada!");
+                        System.out.println("Tarefa não encontrada!");
                     }
                 }
-                
+
                 case 4 -> {
                     System.out.print("ID da tarefa a ser removida: ");
                     long idParaRemover = sc.nextLong();
-                    sc.nextLine(); // Limpa o buffer do scanner
+                    sc.nextLine();
 
                     boolean removido = service.removerTarefa(idParaRemover);
                     if (removido) {
@@ -78,11 +86,11 @@ public class Main {
                         System.out.println("Tarefa não encontrada!");
                     }
                 }
-                
+
                 case 5 -> {
                     System.out.print("ID da tarefa a ser marcada como completa: ");
                     long idParaCompletar = sc.nextLong();
-                    sc.nextLine(); // Limpa o buffer
+                    sc.nextLine(); 
 
                     boolean sucesso = service.marcarComoCompleta(idParaCompletar);
                     if (sucesso) {
@@ -91,8 +99,8 @@ public class Main {
                         System.out.println("Tarefa não encontrada!");
                     }
                 }
-                
-                case 0 -> System.out.println("Saindo... ");
+
+                case 0 -> System.out.println("Saindo...");
 
                 default -> System.out.println("Opção inválida, tente novamente!");
             }

@@ -8,7 +8,17 @@ public class TarefaService {
     private List<Tarefa> tarefa = new ArrayList<>();
     private Long contadorId = 1L;
 
+    
+     * @param titulo O título da tarefa.
+     * @param descricao A descrição da tarefa.
+     * @return A Tarefa criada, ou null se o título for inválido.
+     */
     public Tarefa criarTarefa(String titulo, String descricao) {
+        
+        if (titulo == null || titulo.trim().isEmpty()) {
+            return null;
+        }
+
         Tarefa nova = new Tarefa(titulo, descricao);
         nova.setId(contadorId++);
         tarefa.add(nova);
@@ -38,7 +48,7 @@ public class TarefaService {
     public boolean marcarComoCompleta(long id) {
         for (Tarefa t : tarefa) {
             if (t.getId() == id) {
-                t.setComplemento(true); 
+                t.setComplemento(true);
                 return true;
             }
         }
