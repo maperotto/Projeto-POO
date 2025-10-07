@@ -66,15 +66,27 @@ public class Main {
                     }
                 }
                 
-                /
                 case 4 -> {
                     System.out.print("ID da tarefa a ser removida: ");
                     long idParaRemover = sc.nextLong();
-                    sc.nextLine(); 
+                    sc.nextLine(); // Limpa o buffer do scanner
 
                     boolean removido = service.removerTarefa(idParaRemover);
                     if (removido) {
                         System.out.println("Tarefa removida com sucesso!");
+                    } else {
+                        System.out.println("Tarefa não encontrada!");
+                    }
+                }
+                
+                case 5 -> {
+                    System.out.print("ID da tarefa a ser marcada como completa: ");
+                    long idParaCompletar = sc.nextLong();
+                    sc.nextLine(); // Limpa o buffer
+
+                    boolean sucesso = service.marcarComoCompleta(idParaCompletar);
+                    if (sucesso) {
+                        System.out.println("Tarefa marcada como completa!");
                     } else {
                         System.out.println("Tarefa não encontrada!");
                     }

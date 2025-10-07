@@ -1,4 +1,5 @@
 package ucb.aplicativo.control;
+
 import java.util.ArrayList;
 import java.util.List;
 import ucb.aplicativo.model.Tarefa;
@@ -32,5 +33,15 @@ public class TarefaService {
 
     public boolean removerTarefa(long id) {
         return tarefa.removeIf(t -> t.getId() == id);
+    }
+
+    public boolean marcarComoCompleta(long id) {
+        for (Tarefa t : tarefa) {
+            if (t.getId() == id) {
+                t.setComplemento(true); 
+                return true;
+            }
+        }
+        return false;
     }
 }
